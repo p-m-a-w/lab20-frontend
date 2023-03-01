@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Painting from "./components/Painting";
+import Canvas from "./components/Canvas";
 
 function App() {
   return (
     <div className="App">
-      <Painting />
+      <Canvas />
     </div>
   );
 }

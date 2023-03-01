@@ -1,19 +1,20 @@
-import { Client } from "@stomp/stompjs";
 import React, { useEffect, useState } from "react";
+import { Client } from "@stomp/stompjs";
+
 import Cell from "./Cell";
 
 let client: Client;
 
 let color: string;
 
-function Painting() {
+function Canvas() {
   const [colorGrid, setColorGrid] = useState([[]]);
 
   useEffect(() => {
     if (!client) {
       color = "#" + Math.floor(Math.random() * 16777215).toString(16);
       client = new Client({
-        brokerURL: "ws://10.83.234.218:8080/demo-websocket",
+        brokerURL: "ws://localhost:8080/demo-websocket",
         onConnect: () => {
         client.subscribe("/app/canvas", (message) => {
           const body = JSON.parse(message.body);
@@ -72,4 +73,4 @@ function Painting() {
   );
 }
 
-export default Painting;
+export default Canvas;
