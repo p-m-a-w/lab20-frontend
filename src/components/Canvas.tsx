@@ -23,7 +23,15 @@ function Canvas() {
 
         client.subscribe("/topic/canvas", (message) => {
           const body = JSON.parse(message.body);
-          setColorGrid(body["colorGrid"]);
+          setColorGrid(body["colorGrid"]); 
+          if (body['winner'] != null) {
+            if (body['winner'] == color)
+              alert('you win!')
+            else if (body['winner'] == 'over')
+              alert('game over')
+            else
+              alert('you lose!')
+          }
         });
       }});
 
